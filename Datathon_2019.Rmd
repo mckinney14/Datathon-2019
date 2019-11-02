@@ -16,11 +16,11 @@ library(skimr)
 ```
 
 ```{r load_data}
-validation <- read.csv("/cloud/project/validation_tallskinny.csv")
+library(readr)
 
-training <- read.csv("/cloud/project/training_tallskinny.csv")
-
-interest_topics <- read.csv("/cloud/project/interest_topics.csv")
+training = read_csv("training_tallskinny.csv")
+validation = read_csv("validation_tallskinny.csv")
+interest_topics = read_csv("interest_topics.csv")
 ```
 
 ```{r omit_na}
