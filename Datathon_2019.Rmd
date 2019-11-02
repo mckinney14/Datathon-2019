@@ -22,6 +22,11 @@ training <- read.csv("/cloud/project/training_tallskinny.csv")
 interest_topics <- read.csv("/cloud/project/interest_topics.csv")
 ```
 
+```{r}
+training <- na.omit(training)
+```
+
+
 
 
 
