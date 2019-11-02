@@ -22,7 +22,16 @@ training <- read.csv("/cloud/project/training_tallskinny.csv")
 interest_topics <- read.csv("/cloud/project/interest_topics.csv")
 ```
 
+```{r omit_na}
+training <- na.omit(training)
+```
 
+```{r filter}
+num <- c("303", "304", "305","306","307","308","309","310","311","312","313","314","315")
+
+ce <- training %>%
+  filter(topic_id %in% num)
+```
 
 
 

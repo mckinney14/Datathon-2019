@@ -391,6 +391,11 @@ library(skimr)</code></pre>
 training &lt;- read.csv(&quot;/cloud/project/training_tallskinny.csv&quot;)
 
 interest_topics &lt;- read.csv(&quot;/cloud/project/interest_topics.csv&quot;)</code></pre>
+<pre class="r"><code>training &lt;- na.omit(training)</code></pre>
+<pre class="r"><code>num &lt;- c(&quot;303&quot;, &quot;304&quot;, &quot;305&quot;,&quot;306&quot;,&quot;307&quot;,&quot;308&quot;,&quot;309&quot;,&quot;310&quot;,&quot;311&quot;,&quot;312&quot;,&quot;313&quot;,&quot;314&quot;,&quot;315&quot;)
+
+ce &lt;- training %&gt;%
+  filter(topic_id %in% num)</code></pre>
 
 
 
