@@ -1,0 +1,22 @@
+---
+title: "Datathon 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+validation <- read.csv("/cloud/project/validation_tallskinny.csv")
+
+training <- read.csv("/cloud/project/training_tallskinny.csv")
+
+interest_topics <- read.csv("/cloud/project/interest_topics.csv")
+```
+
+
+
+
+
+
