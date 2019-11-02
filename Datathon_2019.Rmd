@@ -35,7 +35,62 @@ ce <- training %>%
 ```
 
 
+```{r}
+validation <- read.csv("/cloud/project/validation_tallskinny.csv")
 
+training <- read.csv("/cloud/project/training_tallskinny.csv")
+
+interest_topics <- read.csv("/cloud/project/interest_topics.csv")
+```
+
+```{r}
+training <- na.omit(training)
+```
+
+```{r}
+training %>%
+  ggplot(aes(x = log(ltiFeatures))) +
+  geom_histogram() +
+  labs(title = "Histogram of log(Level of long-term interest in the topic)")
+```
+
+```{r}
+dataset1 <- training %>%
+  mutate(short_interest_level = case_when(
+    is.na(stiFeatures) == FALSE ~ stiFeatures,
+    is.na(stiFeatures) == TRUE ~ 0
+  )) %>%
+  mutate(long_interest_level = case_when(
+    is.na(ltiFeatures) == FALSE ~ ltiFeatures,
+    is.na(ltiFeatures) == TRUE ~ 0
+  ))
+```
+
+```{r}
+sti_mean <- dataset1 %>% summarise(mean(short_interest_level))
+lti_mean <- dataset1 %>% summarise(mean(long_interest_level))
+```
+
+```{r}
+dataset2 <- dataset1  %>%
+  mutate(sti_cat = case_when(
+    short_interest_level >= 0.07 ~ "HIGH",
+    short_interest_level < 0.07 ~ "LOW"
+  )) %>%
+  mutate(lti_cat = case_when(
+    long_interest_level >= 0.007 ~ "HIGH",
+    long_interest_level < 0.007 ~ "LOW"
+  ))
+```
+
+```{r}
+dataset2 %>%
+  ggplot(aes(x = inAudience, fill = sti_cat)) + 
+  geom_bar(position = "fill")
+dataset2 %>%
+  ggplot(aes(x = inAudience, fill = lti_cat)) + 
+  geom_bar(position = "fill")
+```
 
 
 
