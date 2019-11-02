@@ -34,19 +34,6 @@ ce <- training %>%
   filter(topic_id %in% num)
 ```
 
-
-```{r}
-validation <- read.csv("/cloud/project/validation_tallskinny.csv")
-
-training <- read.csv("/cloud/project/training_tallskinny.csv")
-
-interest_topics <- read.csv("/cloud/project/interest_topics.csv")
-```
-
-```{r}
-training <- na.omit(training)
-```
-
 ```{r}
 training %>%
   ggplot(aes(x = log(ltiFeatures))) +
