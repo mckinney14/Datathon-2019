@@ -7,6 +7,13 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r load_packages}
+library(tidyverse)
+library(broom)
+library(knitr)
+library(skimr)
+```
+
 ```{r}
 validation <- read.csv("/cloud/project/validation_tallskinny.csv")
 
