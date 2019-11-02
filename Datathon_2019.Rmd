@@ -13,6 +13,7 @@ library(broom)
 library(knitr)
 library(dplyr)
 library(skimr)
+library(regclass)
 ```
 
 ```{r load_data}
@@ -77,6 +78,26 @@ dataset2 %>%
 dataset2 %>%
   ggplot(aes(x = inAudience, fill = lti_cat)) + 
   geom_bar(position = "fill")
+```
+
+```{r}
+topic <- c("/Computers & Electronics")
+
+fin_topics <- interest_topics %>%
+  filter(str_detect(topic_name, "/Finance"))
+
+fin<-training %>%
+  filter(topic_id %in% fin_topics$topic_id)
+
+ggplot()+geom_jitter(aes(x= ltiFeatures, y=inAudience), fin)
+
+ggplot()+geom_jitter(aes(x= stiFeatures, y=inAudience), fin)
+
+logistic= glm(inAudience ~ ltiFeatures+stiFeatures, data = fin, family = 'binomial')
+
+summary(logistic)
+
+confusion_matrix(logistic)
 ```
 
 
